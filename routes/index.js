@@ -23,11 +23,18 @@ exports.movie_single = function(req, res){
 			main_characters: main_characters
 		})
 	} else {
-		res.send('This is not a page you\'re looking for.')
+		res.render('notFound', {
+			movies: movies,
+			title: 'This is not a page you\'re looking for.'
+		})
 	}
 }
 
 // 404 not found
-exports.notFound =  function(req, res){
-	res.send('404 Oops')
+exports.notFound = function(req, res){
+	var movies = moviesJSON.movies
+	res.render('notFound', {
+		movies: movies,
+		title: 'This is not the page you\'re looking for.'
+	})
 }
